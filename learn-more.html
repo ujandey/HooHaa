@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HooHaa AI - Learn More</title>
+    <!-- Import Montserrat and Open Sans from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: black;
+            color: white;
+            text-align: center;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px; /* Smaller padding for mobile */
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+        .navbar .logo-link {
+            display: block; /* Ensure the link wraps the image properly */
+        }
+        .navbar .logo {
+            height: 40px; /* Adjust based on your logo’s size */
+            width: auto; /* Maintain aspect ratio */
+        }
+        .navbar .menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px; /* Size of the hamburger icon */
+            height: 16px; /* Height of the icon */
+            cursor: pointer;
+        }
+        .navbar .menu span {
+            background: white;
+            height: 3px; /* Thickness of each line */
+            width: 100%;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .navbar .menu:hover span {
+            background: #C39AF3; /* Purple on hover to match title */
+        }
+        .navbar .menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .navbar .menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .navbar .menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 5px;
+            padding: 10px;
+            flex-direction: column;
+            align-items: center;
+        }
+        .nav-menu.active {
+            display: flex;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 10px;
+            text-transform: uppercase;
+        }
+        .nav-menu a:hover {
+            color: #C39AF3;
+        }
+        .learn-more-content {
+            padding: 80px 20px 40px; /* Space for navbar */
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .learn-more-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: #C39AF3;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .learn-more-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin: 30px 0 15px;
+            text-transform: uppercase;
+        }
+        .learn-more-content p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .learn-more-content ul {
+            list-style: none;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 10px 0 20px 20px;
+            text-align: left;
+        }
+        .learn-more-content ul li {
+            margin-bottom: 10px;
+        }
+        .learn-more-content ul li::before {
+            content: "✅";
+            color: #C39AF3;
+            margin-right: 10px;
+        }
+        .learn-more-content .version {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #C39AF3;
+            margin-top: 30px;
+        }
+        .back-button {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .back-button a {
+            font-family: 'Open Sans', sans-serif;
+            color: white;
+            background: linear-gradient(145deg, #555, #777);
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5),
+                        -5px -5px 15px rgba(255, 255, 255, 0.1);
+        }
+        .back-button a:hover {
+            background: linear-gradient(145deg, #777, #999);
+            color: white;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7),
+                        -5px -5px 15px rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Tablets and up */
+        @media (min-width: 768px) {
+            .navbar {
+                padding: 20px;
+            }
+            .navbar .logo {
+                height: 50px;
+            }
+            .navbar .menu {
+                width: 28px;
+                height: 18px;
+            }
+            .navbar .menu span {
+                height: 4px;
+            }
+            .nav-menu {
+                top: 60px;
+                right: 20px;
+            }
+            .learn-more-content {
+                padding: 100px 40px 60px;
+            }
+            .learn-more-content h1 {
+                font-size: 48px;
+            }
+            .learn-more-content h2 {
+                font-size: 28px;
+            }
+            .learn-more-content p {
+                font-size: 18px;
+            }
+            .learn-more-content ul {
+                font-size: 18px;
+            }
+            .learn-more-content .version {
+                font-size: 16px;
+            }
+            .back-button a {
+                font-size: 18px;
+                padding: 14px 28px;
+            }
+        }
+
+        /* Desktops */
+        @media (min-width: 1024px) {
+            .learn-more-content {
+                padding: 120px 60px 80px;
+            }
+            .learn-more-content h1 {
+                font-size: 60px;
+            }
+            .learn-more-content h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html" class="logo-link">
+            <img src="hoohaa-logo.png" alt="HooHaa Logo" class="logo">
+        </a>
+        <div class="menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="nav-menu">
+        <a href="#">About</a>
+        <a href="learn-more.html">Learn More</a>
+    </div>
+
+    <div class="learn-more-content">
+        <h1>About HooHaa</h1>
+        <p>
+            Welcome to HooHaa, your AI-powered personal assistant that’s built to be smart, efficient, and—most importantly—actually useful! Unlike other AI assistants that just exist, HooHaa understands, assists, and adapts to your needs.
+        </p>
+        <h2>What is HooHaa?</h2>
+        <p>
+            HooHaa is a voice-powered AI assistant designed to help you with everyday tasks, answer your questions, and make life a little easier. Whether you need quick info, reminders, or just a good conversation, HooHaa’s got your back!
+        </p>
+        <h2>What Can HooHaa Do?</h2>
+        <ul>
+            <li>Understand and respond to voice commands</li>
+            <li>Perform tasks like setting reminders & answering questions</li>
+            <li>Provide smart and personalized assistance</li>
+            <li>Keep improving with future updates</li>
+        </ul>
+        <h2>Why HooHaa?</h2>
+        <p>
+            HooHaa isn’t just another chatbot—it’s built with the vision of being a truly intelligent assistant that evolves with you. No unnecessary fluff, no frustrating lags, just a seamless AI experience.
+        </p>
+        <h2>Meet the Creator</h2>
+        <p>
+            HooHaa is built by Ujan Dey, a passionate developer, researcher, and AI enthusiast who believes in creating tech that actually helps people. Special thanks to Kousiki for assisting with research and experiments!
+        </p>
+        <div class="version">
+            🚀 HooHaa v1.0 – The Beginning
+        </div>
+        <div class="back-button">
+            <a href="index.html">Back to Home</a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

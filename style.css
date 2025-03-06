@@ -1,0 +1,151 @@
+/* General Page Styling */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #888;
+}
+
+/* HooHaa Text Effect (Like Grok) */
+.hoohaa {
+    font-size: 10rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.05); /* Faint text */
+    transition: color 0.5s ease-in-out;
+}
+
+.hoohaa:hover {
+    color: white;
+}
+
+/* Button Styling */
+.buttons {
+    margin-top: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 10px;
+    font-size: 18px;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.button:hover {
+    background: white;
+    color: black;
+}
+
+/* Footer (Optional) */
+.footer {
+    margin-top: 50px;
+    color: grey;
+    font-size: 14px;
+}
+/* Prevent horizontal scroll */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/* Fix the large text issue */
+.grok-effect {
+    font-size: min(20vw, 100px); /* Shrinks dynamically */
+    opacity: 0.05;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    z-index: -1;
+}
+
+/* Navbar Fix */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Adjusted for better spacing on mobile */
+    flex-wrap: wrap; /* Ensures responsiveness */
+    width: 100%;
+}
+
+
+/* Content Centering */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: auto; /* Changed to auto for better mobile fit */
+    width: 100%;
+    padding: 20px; /* Added padding for mobile */
+}
+
+
+/* Buttons Responsive */
+.button {
+    width: 90%;
+    max-width: 180px; /* Adjusted max-width for better fit on mobile */
+}
+/* Background text styling */
+.grok-effect {
+    font-size: min(30vw, 100px); /* Adjust size dynamically */
+    opacity: 0.05;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    line-height: 1; /* Ensures text stays compact */
+    text-align: center;
+}
+
+/* Force text to split into two lines for a square shape */
+@media (max-width: 768px) {
+    .grok-effect {
+        font-size: 15vw; /* Adjust for smaller screens */
+        display: grid;
+        grid-template-rows: repeat(2, 1fr); /* Force 2 rows */
+    }
+}
+
+
+
+
