@@ -156,6 +156,48 @@
                         -5px -5px 15px rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
         }
+        body.light-theme {
+    background: #f0f0f0;
+    color: black;
+}
+body.light-theme .navbar .menu span {
+    background: black;
+}
+body.light-theme .nav-menu {
+    background: rgba(255, 255, 255, 0.9);
+}
+body.light-theme .nav-menu a {
+    color: black;
+}
+body.light-theme .nav-menu a:hover {
+    color: #8B5CF6;
+}
+body.light-theme .assistant-content h1 {
+    color: #8B5CF6;
+}
+body.light-theme .chat-container {
+    background: #ddd;
+}
+body.light-theme .message.user {
+    background: #8B5CF6;
+    color: white;
+}
+body.light-theme .message.assistant {
+    background: #ccc;
+    color: black;
+}
+body.light-theme #userInput {
+    background: #ccc;
+    color: black;
+}
+body.light-theme .back-button a {
+    color: black;
+    background: linear-gradient(145deg, #ccc, #eee);
+}
+body.light-theme .back-button a:hover {
+    background: linear-gradient(145deg, #ddd, #fff);
+    color: black;
+}
 
         /* Tablets and up */
         @media (min-width: 768px) {
@@ -195,6 +237,35 @@
                 padding: 12px 24px;
             }
         }
+        body.light-theme {
+    background: #f0f0f0;
+    color: black;
+}
+body.light-theme .navbar .menu span {
+    background: black;
+}
+body.light-theme .nav-menu {
+    background: rgba(255, 255, 255, 0.9);
+    color: black;
+}
+body.light-theme .nav-menu a {
+    color: black;
+}
+body.light-theme .settings-section h2 {
+    color: black;
+}
+body.light-theme .settings-section select {
+    background: #ddd;
+    color: black;
+}
+body.light-theme .save-button button {
+    color: black;
+    background: linear-gradient(145deg, #ccc, #eee);
+}
+body.light-theme .back-button a {
+    color: black;
+    background: linear-gradient(145deg, #ccc, #eee);
+}
 
         /* Desktops */
         @media (min-width: 1024px) {
@@ -230,5 +301,11 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('hoohaa-theme') || 'dark';
+            document.body.classList.toggle('light-theme', savedTheme === 'light');
+        });
+    </script>
 </body>
 </html>

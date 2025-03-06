@@ -17,6 +17,7 @@
             color: white;
             text-align: center;
             overflow-x: hidden; /* Prevent horizontal scroll */
+            transition: background 0.3s ease, color 0.3s ease; /* Smooth theme transition */
         }
         .navbar {
             display: flex;
@@ -27,6 +28,7 @@
             width: 100%;
             top: 0;
             left: 0;
+            z-index: 1000; /* Ensure navbar is above other content */
         }
         .navbar .logo-link {
             display: block; /* Ensure the link wraps the image properly */
@@ -42,6 +44,7 @@
             width: 24px; /* Size of the hamburger icon */
             height: 16px; /* Height of the icon */
             cursor: pointer;
+            z-index: 1001; /* Ensure clickable */
         }
         .navbar .menu span {
             background: white;
@@ -72,6 +75,7 @@
             padding: 10px;
             flex-direction: column;
             align-items: center;
+            z-index: 1000; /* Ensure menu is above other content */
         }
         .nav-menu.active {
             display: flex;
@@ -152,6 +156,39 @@
             transform: translateY(-2px); /* Slight lift effect */
         }
 
+        /* Updated light-theme styles */
+        body.light-theme {
+            background: #f0f0f0;
+            color: black;
+        }
+        body.light-theme .navbar .menu span {
+            background: black;
+        }
+        body.light-theme .nav-menu {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        body.light-theme .nav-menu a {
+            color: black;
+        }
+        body.light-theme .nav-menu a:hover {
+            color: #8B5CF6; /* Darker purple for hover in light theme */
+        }
+        body.light-theme .title {
+            color: #8B5CF6; /* Darker purple for title */
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.5); /* Adjusted glow */
+        }
+        body.light-theme .announcement {
+            color: black;
+        }
+        body.light-theme .buttons a {
+            color: black;
+            background: linear-gradient(145deg, #ccc, #eee);
+        }
+        body.light-theme .buttons a:hover {
+            background: linear-gradient(145deg, #ddd, #fff);
+            color: black;
+        }
+
         /* Tablets and up */
         @media (min-width: 768px) {
             .navbar {
@@ -208,18 +245,26 @@
         </div>
     </div>
     <div class="nav-menu">
-        <a href="#">About</a>
-        <a href="learn-more.html">Learn More</a>
+        <a href="learn-more.html">About Us</a>
+        <a href="commands.html">Learn More</a>
+        <a href="settings.html">Settings</a>
     </div>
     
     <div class="content">
-        <div class="title">HOOHA</div>
+        <div class="title">HooHaa</div>
         <div class="announcement">Announcing HooHaa</div>
         <div class="buttons">
-            <a href="learn-more.html">Learn more</a>
+            <a href="commands.html">Explore Features</a>
             <a href="assistant.html">Try now →</a>
         </div>
     </div>
     <script src="script.js"></script>
+    <script>
+        // Apply theme on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('hoohaa-theme') || 'dark';
+            document.body.classList.toggle('light-theme', savedTheme === 'light');
+        });
+    </script>
 </body>
 </html>

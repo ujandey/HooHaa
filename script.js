@@ -1,11 +1,46 @@
+// Debug to confirm script is loaded
+console.log("script.js loaded");
+
 // Toggle mobile menu
 const menuToggle = document.querySelector('.menu');
 const navMenu = document.querySelector('.nav-menu');
 
-menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
+if (menuToggle && navMenu) {
+    console.log("Menu elements found");
+    menuToggle.addEventListener('click', () => {
+        console.log("Hamburger menu clicked");
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    navMenu.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            console.log("Menu link clicked, closing menu");
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    });
+
+
+    navMenu.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            console.log("Menu link clicked, closing menu");
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    });
+} else {
+    console.error("Menu or navMenu element not found");
+}
+
+    navMenu.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            console.log("Menu closed by link click"); // Debug log
+        }
+    });
+ 
 
 // Close menu when clicking a link
 navMenu.addEventListener('click', (e) => {
@@ -15,7 +50,7 @@ navMenu.addEventListener('click', (e) => {
     }
 });
 
-// Chatbot functionality
+// Chatbot functionality (for assistant.html)
 const chatLog = document.getElementById('chatLog');
 const userInput = document.getElementById('userInput');
 

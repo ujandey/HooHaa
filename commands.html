@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HooHaa AI - Learn More</title>
+    <title>HooHaa AI - What Can HooHaa Do?</title>
     <!-- Import Montserrat and Open Sans from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -16,42 +16,43 @@
             background: black;
             color: white;
             text-align: center;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
         }
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 15px; /* Smaller padding for mobile */
+            padding: 10px 15px;
             position: absolute;
             width: 100%;
             top: 0;
             left: 0;
         }
         .navbar .logo-link {
-            display: block; /* Ensure the link wraps the image properly */
+            display: block;
         }
         .navbar .logo {
-            height: 40px; /* Adjust based on your logo’s size */
-            width: auto; /* Maintain aspect ratio */
+            height: 40px;
+            width: auto;
         }
         .navbar .menu {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            width: 24px; /* Size of the hamburger icon */
-            height: 16px; /* Height of the icon */
+            width: 24px;
+            height: 16px;
             cursor: pointer;
         }
         .navbar .menu span {
             background: white;
-            height: 3px; /* Thickness of each line */
+            height: 3px;
             width: 100%;
             border-radius: 2px;
             transition: all 0.3s ease;
         }
         .navbar .menu:hover span {
-            background: #C39AF3; /* Purple on hover to match title */
+            background: #C39AF3;
         }
         .navbar .menu.active span:nth-child(1) {
             transform: rotate(45deg) translate(5px, 5px);
@@ -88,13 +89,13 @@
         .nav-menu a:hover {
             color: #C39AF3;
         }
-        .learn-more-content {
-            padding: 80px 20px 40px; /* Space for navbar */
+        .commands-content {
+            padding: 80px 20px 40px;
             max-width: 800px;
             margin: 0 auto;
             text-align: left;
         }
-        .learn-more-content h1 {
+        .commands-content h1 {
             font-family: 'Montserrat', sans-serif;
             font-size: 36px;
             font-weight: 900;
@@ -103,7 +104,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-        .learn-more-content h2 {
+        .commands-content h2 {
             font-family: 'Montserrat', sans-serif;
             font-size: 24px;
             font-weight: 700;
@@ -111,35 +112,35 @@
             margin: 30px 0 15px;
             text-transform: uppercase;
         }
-        .learn-more-content p {
+        .commands-content p {
             font-family: 'Open Sans', sans-serif;
             font-size: 16px;
             font-weight: 400;
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
-        .learn-more-content ul {
+        .commands-content ul {
             list-style: none;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
             margin: 10px 0 20px 20px;
             text-align: left;
         }
-        .learn-more-content ul li {
+        .commands-content ul li {
             margin-bottom: 10px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
         }
-        .learn-more-content ul li::before {
-            content: "✅";
+        .commands-content ul li span.command {
+            color: #C39AF3;
+            transition: transform 0.3s ease;
+        }
+        .commands-content ul li:hover span.command {
+            transform: translateX(10px);
+        }
+        .commands-content ul li::before {
+            content: "➤";
             color: #C39AF3;
             margin-right: 10px;
-        }
-        .learn-more-content .version {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            color: #C39AF3;
-            margin-top: 30px;
         }
         .back-button {
             margin-top: 30px;
@@ -168,39 +169,50 @@
                         -5px -5px 15px rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
         }
+
+        /* Updated light-theme styles */
         body.light-theme {
-    background: #f0f0f0;
-    color: black;
-}
-body.light-theme .navbar .menu span {
-    background: black;
-}
-body.light-theme .nav-menu {
-    background: rgba(255, 255, 255, 0.9);
-}
-body.light-theme .nav-menu a {
-    color: black;
-}
-body.light-theme .nav-menu a:hover {
-    color: #8B5CF6;
-}
-body.light-theme .learn-more-content h1 {
-    color: #8B5CF6; /* Darker purple */
-}
-body.light-theme .learn-more-content h2 {
-    color: black;
-}
-body.light-theme .learn-more-content p {
-    color: black;
-}
-body.light-theme .back-button a {
-    color: black;
-    background: linear-gradient(145deg, #ccc, #eee);
-}
-body.light-theme .back-button a:hover {
-    background: linear-gradient(145deg, #ddd, #fff);
-    color: black;
-}
+            background: #f0f0f0;
+            color: black;
+        }
+        body.light-theme .navbar .menu span {
+            background: black;
+        }
+        body.light-theme .nav-menu {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        body.light-theme .nav-menu a {
+            color: black;
+        }
+        body.light-theme .nav-menu a:hover {
+            color: #8B5CF6; /* Darker purple for hover */
+        }
+        body.light-theme .commands-content h1 {
+            color: #8B5CF6; /* Darker purple for heading */
+        }
+        body.light-theme .commands-content h2 {
+            color: black;
+        }
+        body.light-theme .commands-content p {
+            color: black;
+        }
+        body.light-theme .commands-content ul li {
+            color: black;
+        }
+        body.light-theme .commands-content ul li span.command {
+            color: #8B5CF6; /* Darker purple for command text */
+        }
+        body.light-theme .commands-content ul li::before {
+            color: #8B5CF6; /* Darker purple for bullet */
+        }
+        body.light-theme .back-button a {
+            color: black;
+            background: linear-gradient(145deg, #ccc, #eee);
+        }
+        body.light-theme .back-button a:hover {
+            background: linear-gradient(145deg, #ddd, #fff);
+            color: black;
+        }
 
         /* Tablets and up */
         @media (min-width: 768px) {
@@ -221,23 +233,20 @@ body.light-theme .back-button a:hover {
                 top: 60px;
                 right: 20px;
             }
-            .learn-more-content {
+            .commands-content {
                 padding: 100px 40px 60px;
             }
-            .learn-more-content h1 {
+            .commands-content h1 {
                 font-size: 48px;
             }
-            .learn-more-content h2 {
+            .commands-content h2 {
                 font-size: 28px;
             }
-            .learn-more-content p {
+            .commands-content p {
                 font-size: 18px;
             }
-            .learn-more-content ul {
+            .commands-content ul li {
                 font-size: 18px;
-            }
-            .learn-more-content .version {
-                font-size: 16px;
             }
             .back-button a {
                 font-size: 18px;
@@ -247,13 +256,13 @@ body.light-theme .back-button a:hover {
 
         /* Desktops */
         @media (min-width: 1024px) {
-            .learn-more-content {
+            .commands-content {
                 padding: 120px 60px 80px;
             }
-            .learn-more-content h1 {
+            .commands-content h1 {
                 font-size: 60px;
             }
-            .learn-more-content h2 {
+            .commands-content h2 {
                 font-size: 32px;
             }
         }
@@ -271,37 +280,43 @@ body.light-theme .back-button a:hover {
         </div>
     </div>
     <div class="nav-menu">
-        <a href="#">About</a>
-        <a href="learn-more.html">Learn More</a>
+        <a href="learn-more.html">About Us</a>
+        <a href="commands.html">Learn More</a>
+        <a href="settings.html">Settings</a>
     </div>
 
-    <div class="learn-more-content">
-        <h1>About HooHaa</h1>
-        <p>
-            Welcome to HooHaa, your AI-powered personal assistant that’s built to be smart, efficient, and—most importantly—actually useful! Unlike other AI assistants that just exist, HooHaa understands, assists, and adapts to your needs.
-        </p>
-        <h2>What is HooHaa?</h2>
-        <p>
-            HooHaa is a voice-powered AI assistant designed to help you with everyday tasks, answer your questions, and make life a little easier. Whether you need quick info, reminders, or just a good conversation, HooHaa’s got your back!
-        </p>
-        <h2>What Can HooHaa Do?</h2>
+    <div class="commands-content">
+        <h1>What Can HooHaa Do?</h1>
+        <p>Discover the power of HooHaa, your voice-powered AI assistant! Below are examples of what you can ask HooHaa to make your day easier and more fun. Just say "Hey HooHaa" followed by your command!</p>
+
+        <h2>Everyday Tasks</h2>
         <ul>
-            <li>Understand and respond to voice commands</li>
-            <li>Perform tasks like setting reminders & answering questions</li>
-            <li>Provide smart and personalized assistance</li>
-            <li>Keep improving with future updates</li>
+            <li>Set reminders with <span class="command">"Hey HooHaa, remind me to call Mom at 5 PM"</span></li>
+            <li>Create notes with <span class="command">"Hey HooHaa, note that I need to buy milk"</span></li>
+            <li>Add items to lists with <span class="command">"Hey HooHaa, add eggs to my grocery list"</span></li>
         </ul>
-        <h2>Why HooHaa?</h2>
-        <p>
-            HooHaa isn’t just another chatbot—it’s built with the vision of being a truly intelligent assistant that evolves with you. No unnecessary fluff, no frustrating lags, just a seamless AI experience.
-        </p>
-        <h2>Meet the Creator</h2>
-        <p>
-            HooHaa is built by Ujan Dey, a passionate developer, researcher, and AI enthusiast who believes in creating tech that actually helps people. Special thanks to Kousiki for assisting with research and experiments!
-        </p>
-        <div class="version">
-            🚀 HooHaa v1.0 – The Beginning
-        </div>
+
+        <h2>Information & Assistance</h2>
+        <ul>
+            <li>Get quick facts with <span class="command">"Hey HooHaa, what’s the weather like today?"</span></li>
+            <li>Perform calculations with <span class="command">"Hey HooHaa, what’s 25% of 80?"</span></li>
+            <li>Translate phrases with <span class="command">"Hey HooHaa, how do you say 'hello' in French?"</span></li>
+        </ul>
+
+        <h2>Personalization & Fun</h2>
+        <ul>
+            <li>Personalize responses with <span class="command">"Hey HooHaa, tell me a joke"</span></li>
+            <li>Play games with <span class="command">"Hey HooHaa, flip a coin"</span></li>
+            <li>Get creative ideas with <span class="command">"Hey HooHaa, suggest a dinner recipe"</span></li>
+        </ul>
+
+        <h2>Smart Integration (Future Updates)</h2>
+        <ul>
+            <li>Control smart devices with <span class="command">"Hey HooHaa, turn off the living room lights"</span> (coming soon)</li>
+            <li>Schedule events with <span class="command">"Hey HooHaa, schedule a meeting at 2 PM tomorrow"</span> (coming soon)</li>
+        </ul>
+
+        <p>Want to explore more? Try asking <span class="command">"Hey HooHaa, what can you do?"</span> while using the assistant page!</p>
         <div class="back-button">
             <a href="index.html">Back to Home</a>
         </div>

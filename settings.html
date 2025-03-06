@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HooHaa AI - Settings</title>
+    <!-- Import Montserrat and Open Sans from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: black;
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+            font-family: 'Open Sans', sans-serif;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .navbar .logo-link {
+            display: block;
+        }
+        .navbar .logo {
+            height: 40px;
+            width: auto;
+        }
+        .navbar .menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 16px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .navbar .menu span {
+            background: white;
+            height: 3px;
+            width: 100%;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .navbar .menu:hover span {
+            background: #C39AF3;
+        }
+        .navbar .menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .navbar .menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .navbar .menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        .nav-menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 5px;
+            padding: 10px;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1000;
+        }
+        .nav-menu.active {
+            display: flex;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 10px;
+            text-transform: uppercase;
+        }
+        .nav-menu a:hover {
+            color: #C39AF3;
+        }
+        .settings-content {
+            padding: 80px 20px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .settings-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: #C39AF3;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .settings-section {
+            margin-bottom: 30px;
+        }
+        .settings-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .settings-section label {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .settings-section select {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            border-radius: 10px;
+            background: #222;
+            color: white;
+            border: none;
+            outline: none;
+            transition: background 0.3s ease;
+        }
+        .save-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .save-button button {
+            font-family: 'Open Sans', sans-serif;
+            color: white;
+            background: linear-gradient(145deg, #555, #777);
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5),
+                        -5px -5px 15px rgba(255, 255, 255, 0.1);
+        }
+        .save-button button:hover {
+            background: linear-gradient(145deg, #777, #999);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7),
+                        -5px -5px 15px rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        .back-button {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .back-button a {
+            font-family: 'Open Sans', sans-serif;
+            color: white;
+            background: linear-gradient(145deg, #555, #777);
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5),
+                        -5px -5px 15px rgba(255, 255, 255, 0.1);
+        }
+        .back-button a:hover {
+            background: linear-gradient(145deg, #777, #999);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7),
+                        -5px -5px 15px rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Updated light-theme styles */
+        body.light-theme {
+            background: #f0f0f0;
+            color: black;
+        }
+        body.light-theme .navbar .menu span {
+            background: black;
+        }
+        body.light-theme .nav-menu {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        body.light-theme .nav-menu a {
+            color: black;
+        }
+        body.light-theme .nav-menu a:hover {
+            color: #8B5CF6; /* Darker purple for hover */
+        }
+        body.light-theme .settings-content h1 {
+            color: #8B5CF6; /* Darker purple for heading */
+        }
+        body.light-theme .settings-section h2 {
+            color: black;
+        }
+        body.light-theme .settings-section label {
+            color: black;
+        }
+        body.light-theme .settings-section select {
+            background: #ddd;
+            color: black;
+        }
+        body.light-theme .save-button button {
+            color: black;
+            background: linear-gradient(145deg, #ccc, #eee);
+        }
+        body.light-theme .save-button button:hover {
+            background: linear-gradient(145deg, #ddd, #fff);
+            color: black;
+        }
+        body.light-theme .back-button a {
+            color: black;
+            background: linear-gradient(145deg, #ccc, #eee);
+        }
+        body.light-theme .back-button a:hover {
+            background: linear-gradient(145deg, #ddd, #fff);
+            color: black;
+        }
+
+        /* Tablets and up */
+        @media (min-width: 768px) {
+            .navbar {
+                padding: 20px;
+            }
+            .navbar .logo {
+                height: 50px;
+            }
+            .navbar .menu {
+                width: 28px;
+                height: 18px;
+            }
+            .navbar .menu span {
+                height: 4px;
+            }
+            .nav-menu {
+                top: 60px;
+                right: 20px;
+            }
+            .settings-content {
+                padding: 100px 40px 60px;
+            }
+            .settings-content h1 {
+                font-size: 48px;
+            }
+            .settings-section h2 {
+                font-size: 28px;
+            }
+            .settings-section label,
+            .settings-section select {
+                font-size: 18px;
+            }
+            .save-button button,
+            .back-button a {
+                font-size: 18px;
+                padding: 14px 28px;
+            }
+        }
+
+        /* Desktops */
+        @media (min-width: 1024px) {
+            .settings-content {
+                padding: 120px 60px 80px;
+            }
+            .settings-content h1 {
+                font-size: 60px;
+            }
+            .settings-section h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html" class="logo-link">
+            <img src="hoohaa-logo.png" alt="HooHaa Logo" class="logo">
+        </a>
+        <div class="menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="nav-menu">
+        <a href="learn-more.html">About Us</a>
+        <a href="commands.html">Learn More</a>
+    </div>
+
+    <div class="settings-content">
+        <h1>Settings</h1>
+        <div class="settings-section">
+            <h2>Voice Preference</h2>
+            <label for="voice-select">Choose HooHaa's Voice:</label>
+            <select id="voice-select">
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="robotic">Robotic</option>
+            </select>
+        </div>
+        <div class="settings-section">
+            <h2>Theme Preference</h2>
+            <label for="theme-select">Choose Theme:</label>
+            <select id="theme-select">
+                <option value="dark">Dark (Default)</option>
+                <option value="light">Light</option>
+            </select>
+        </div>
+        <div class="settings-section">
+            <h2>AI Behavior</h2>
+            <label for="behavior-select">Choose Response Style:</label>
+            <select id="behavior-select">
+                <option value="formal">Formal</option>
+                <option value="casual">Casual</option>
+                <option value="humorous">Humorous</option>
+            </select>
+        </div>
+        <div class="save-button">
+            <button onclick="saveSettings()">Save Settings</button>
+        </div>
+        <div class="back-button">
+            <a href="index.html">Back to Home</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Settings-specific JavaScript
+        document.addEventListener('DOMContentLoaded', () => {
+            const voiceSelect = document.getElementById('voice-select');
+            const themeSelect = document.getElementById('theme-select');
+            const behaviorSelect = document.getElementById('behavior-select');
+
+            // Load saved settings
+            const savedVoice = localStorage.getItem('hoohaa-voice') || 'female';
+            const savedTheme = localStorage.getItem('hoohaa-theme') || 'dark';
+            const savedBehavior = localStorage.getItem('hoohaa-behavior') || 'casual';
+
+            voiceSelect.value = savedVoice;
+            themeSelect.value = savedTheme;
+            behaviorSelect.value = savedBehavior;
+
+            // Apply theme immediately
+            document.body.classList.toggle('light-theme', savedTheme === 'light');
+        });
+
+        function saveSettings() {
+            const voiceSelect = document.getElementById('voice-select');
+            const themeSelect = document.getElementById('theme-select');
+            const behaviorSelect = document.getElementById('behavior-select');
+
+            localStorage.setItem('hoohaa-voice', voiceSelect.value);
+            localStorage.setItem('hoohaa-theme', themeSelect.value);
+            localStorage.setItem('hoohaa-behavior', behaviorSelect.value);
+
+            // Apply theme
+            document.body.classList.toggle('light-theme', themeSelect.value === 'light');
+
+            alert('Settings saved!');
+        }
+    </script>
+</body>
+</html>
